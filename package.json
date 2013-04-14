@@ -1,0 +1,27 @@
+{
+  "name": "raptor-hot-reload",
+  "version": "0.1.0",
+  "description": "Node module to support reloading Raptor applications based on changes to files",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/raptorjs/raptor-hot-reload.git"
+  },
+  "keywords": [
+    "reload",
+    "raptor",
+    "amd",
+    "module",
+    "reload"
+  ],
+  "author": "Patrick Steele-Idem <psteeleidem@ebay.com>",
+  "license": "Apache License 2.0",
+  "readmeFilename": "README.md",
+  "gitHead": "2537ece55e29dd57128ed8ce5cf232ef54675b5e",
+  "dependencies": {
+    "hot-reload": "~1.2.2"
+  }
+}
