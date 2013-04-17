@@ -1,0 +1,4 @@
+{
+    "modules.dir": "modules",
+    "rtld.file": "raptor-hot-reload.rtld"
+}

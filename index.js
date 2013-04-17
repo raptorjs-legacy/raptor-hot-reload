@@ -8,6 +8,26 @@ proto.uninstallRaptor = function(uninstallRaptor) {
     return this;
 }
 
+proto.clientAutoReload = function(sockets) {
+    var _this = this;
+
+    sockets.on('connection', function (socket) {
+
+        var emitModified = function(eventArgs) {
+            socket.emit('modified', {path: eventArgs.path});
+        }
+
+        _this.afterReload(emitModified)
+            .afterSpecialReload(emitModified);
+
+        socket.on('disconnect', function () {
+            _this.removeListener('afterReload', emitModified);
+            _this.removeListener('afterSpecialReload', emitModified);
+        });
+    });
+    
+    return this;
+}
 
 exports.create = function(require) {
     if (typeof require !== "function") {

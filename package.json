@@ -23,5 +23,10 @@
   "gitHead": "2537ece55e29dd57128ed8ce5cf232ef54675b5e",
   "dependencies": {
     "hot-reload": "~1.2.2"
+  },
+  "raptor": {
+    "search-path": [
+      "modules"
+    ]
   }
 }

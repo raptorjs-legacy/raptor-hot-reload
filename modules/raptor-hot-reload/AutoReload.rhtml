@@ -1,0 +1,16 @@
+<c:template
+    xmlns:c="core"
+    name="AutoReload"
+    params="">
+    
+    <script src="/socket.io/socket.io.js"></script>
+    <script xml:space="preserve">
+    (function() {
+        var socket = io.connect(location.protocol + '//' + location.host);
+        socket.on('modified', function (data) {
+            location.reload();
+        });
+    }()); 
+    </script>
+
+</c:template>

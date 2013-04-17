@@ -1,0 +1,14 @@
+<raptor-taglib>
+    <uri>raptor-hot-reload</uri>
+
+    <!--
+    <import-taglib path="path/to/some.rtld"/>
+
+    <tag name="my-custom-tag" renderer="some/namespace/CustomTagRenderer">
+        <attribute name="label" type="string"/>
+    </tag>
+    -->
+    <tag name="auto-reload" renderer="raptor-hot-reload/AutoReloadTag">
+        <attribute name="enabled" type="boolean"/>
+    </tag>
+</raptor-taglib>
