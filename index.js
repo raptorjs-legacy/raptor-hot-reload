@@ -44,7 +44,7 @@ exports.create = function(require) {
         console.log('[raptor-hot-reload] Unloaded template: ' + path);
     });
 
-    hotReloader.on('beforeReload', function() {
+    hotReloader.beforeReload(function() {
         if (hotReloader._uninstallRaptor) {
             console.log('[raptor-hot-reload] Uninstalling RaptorJS...');
 
