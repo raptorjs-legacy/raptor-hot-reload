@@ -1,6 +1,6 @@
 {
   "name": "raptor-hot-reload",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Node module to support reloading Raptor applications based on changes to files",
   "main": "index.js",
   "scripts": {
@@ -21,7 +21,7 @@
   "license": "Apache License 2.0",
   "readmeFilename": "README.md",
   "dependencies": {
-    "hot-reload": "~1.2.9"
+    "hot-reload": "~1.2.10"
   },
   "raptor": {
     "search-path": [
