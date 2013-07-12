@@ -10,7 +10,7 @@ proto.uninstallRaptor = function(uninstallRaptor) {
 
 proto.clientAutoReload = function(sockets) {
     var _this = this;
-    require('raptor-hot-reload/AutoReloadTag').setEnabled(true);
+    global.raptorClientAutoReloadEnabled = true;
 
     sockets.on('connection', function (socket) {
 
@@ -29,6 +29,8 @@ proto.clientAutoReload = function(sockets) {
 
     return this;
 };
+
+var req = require;
 
 exports.create = function(require) {
     if (typeof require !== "function") {
@@ -62,6 +64,21 @@ exports.create = function(require) {
 
         require('raptor/templating').unloadFile(path);
         console.log('[raptor-hot-reload] Unloaded template: ' + path);
+    });
+
+    hotReloader.specialReload("*.rtld", function(path, context) {
+        var compiler = require('raptor/templating/compiler');
+        var workDir = compiler.getWorkDir ? compiler.getWorkDir() : compiler.workDir;
+
+        if (workDir) {
+            // Delete the compiled templates that were saved to disk
+            // because the taglibs control how a template is compiled
+            req('wrench').rmdirSyncRecursive(workDir.toString(), true);
+            console.log('[raptor-hot-reload] Deleted work directory: ' + workDir);    
+        }
+
+        // Continue with a full reload
+        context.fullReload();
     });
 
     hotReloader.beforeReload(function() {
