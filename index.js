@@ -6,16 +6,17 @@ var proto = HotReloader.prototype;
 proto.uninstallRaptor = function(uninstallRaptor) {
     this._uninstallRaptor = uninstallRaptor !== false;
     return this;
-}
+};
 
 proto.clientAutoReload = function(sockets) {
     var _this = this;
+    require('raptor-hot-reload/AutoReloadTag').setEnabled(true);
 
     sockets.on('connection', function (socket) {
 
         var emitModified = function(eventArgs) {
             socket.emit('modified', {path: eventArgs.path});
-        }
+        };
 
         _this.afterReload(emitModified)
             .afterSpecialReload(emitModified);
@@ -25,9 +26,9 @@ proto.clientAutoReload = function(sockets) {
             _this.removeListener('afterSpecialReload', emitModified);
         });
     });
-    
+
     return this;
-}
+};
 
 exports.create = function(require) {
     if (typeof require !== "function") {
@@ -48,7 +49,7 @@ exports.create = function(require) {
             }
         }
         return false;
-    })
+    });
 
     // hotReloader.specialReload("\.(css|rhtml|less)$", function(path) {
     //     require('raptor/optimizer').getDefaultPageOptimizer().clearCache();
@@ -59,7 +60,6 @@ exports.create = function(require) {
         require('raptor/optimizer').getDefaultPageOptimizer().clearCache();
         console.log('[raptor-hot-reload] Cleared RaptorJS Optimizer cache');
 
-        
         require('raptor/templating').unloadFile(path);
         console.log('[raptor-hot-reload] Unloaded template: ' + path);
     });
