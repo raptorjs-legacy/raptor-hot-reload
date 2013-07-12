@@ -28,5 +28,8 @@
     "search-path": [
       "modules"
     ]
+  },
+  "publishConfig": {
+    "registry": "http://registry.npmjs.org/"
   }
 }
