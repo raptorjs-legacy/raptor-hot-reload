@@ -21,7 +21,7 @@
   "license": "Apache License 2.0",
   "readmeFilename": "README.md",
   "dependencies": {
-    "hot-reload": "~1.2.10",
+    "hot-reload": "~1.2.12",
     "wrench": "~1.5.1"
   },
   "raptor": {
