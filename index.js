@@ -41,6 +41,23 @@ exports.create = function(require) {
 
     var hotReloader = hotReload.create(require);
     hotReloader._uninstallRaptor = true;
+
+    // Exclude the express module from being uncached
+    // since it is used to start a long running server
+    // that should not be restarted
+    var express;
+
+    try {
+        express = require('express');
+    }
+    catch(e) {
+    }
+
+    if (express) {
+        hotReloader.uncacheExclude('express');
+    }
+    
+
     hotReloader.uncache(function(moduleName) {
         if (hotReloader._uninstallRaptor) {
             if (moduleName.endsWith('.raptor_module')) {
