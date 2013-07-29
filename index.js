@@ -56,7 +56,8 @@ exports.create = function(require) {
     if (express) {
         hotReloader.uncacheExclude('express');
     }
-    
+
+    hotReloader.uncacheExclude(/\/node_modules\/q\//);
 
     hotReloader.uncache(function(moduleName) {
         if (hotReloader._uninstallRaptor) {
