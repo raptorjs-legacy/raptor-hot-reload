@@ -92,11 +92,21 @@ exports.create = function(require) {
             // Delete the compiled templates that were saved to disk
             // because the taglibs control how a template is compiled
             req('wrench').rmdirSyncRecursive(workDir.toString(), true);
-            console.log('[raptor-hot-reload] Deleted work directory: ' + workDir);    
+            console.log('[raptor-hot-reload] Deleted work directory: ' + workDir);
         }
 
         // Continue with a full reload
         context.fullReload();
+    });
+
+    hotReloader.specialReload('*.css', function(path) {
+        require('raptor/optimizer').getDefaultPageOptimizer().clearCache();
+        console.log('[raptor-hot-reload] Cleared RaptorJS Optimizer cache');
+    });
+
+    hotReloader.specialReload('*.less', function(path) {
+        require('raptor/optimizer').getDefaultPageOptimizer().clearCache();
+        console.log('[raptor-hot-reload] Cleared RaptorJS Optimizer cache');
     });
 
     hotReloader.beforeReload(function() {
