@@ -1,10 +1,9 @@
 {
   "name": "raptor-hot-reload",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "description": "Node module to support reloading Raptor applications based on changes to files",
   "main": "index.js",
-  "scripts": {
-  },
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "https://github.com/raptorjs/raptor-hot-reload.git"
